@@ -2,9 +2,8 @@ import { Transform } from 'class-transformer';
 import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
 import { Priority } from 'prisma/generated/client';
 
-export class TaskDto {
+export class CreateTaskDto {
 	@IsString()
-	@IsOptional()
 	name: string;
 
 	@IsBoolean()
@@ -19,4 +18,10 @@ export class TaskDto {
 	@IsOptional()
 	@Transform(({ value }) => ('' + value).toLowerCase())
 	priority?: Priority;
+}
+
+export class UpdateTaskDto extends CreateTaskDto {
+	@IsString()
+	@IsOptional()
+	name: string;
 }
