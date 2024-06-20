@@ -35,7 +35,7 @@ export class TaskController {
 	@HttpCode(200)
 	@Delete(':id')
 	@Auth()
-	async delete(@Param('id') id: string) {
-		return this.taskService.delete(id);
+	async delete(@CurrentUser('id') userId: string, @Param('id') id: string) {
+		return this.taskService.delete(id, userId);
 	}
 }
