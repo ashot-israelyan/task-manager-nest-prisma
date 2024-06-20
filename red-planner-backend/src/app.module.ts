@@ -7,4 +7,4 @@ import { TaskModule } from './task/task.module';
 @Module({
 	imports: [ConfigModule.forRoot(), AuthModule, UserModule, TaskModule],
 })
-export class AppModule { }
+export class AppModule {}

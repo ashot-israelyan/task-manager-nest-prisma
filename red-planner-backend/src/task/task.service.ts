@@ -4,13 +4,13 @@ import { TaskDto } from './task.dto';
 
 @Injectable()
 export class TaskService {
-	constructor(private prisma: PrismaService) { }
+	constructor(private prisma: PrismaService) {}
 
 	async getAll(userId: string) {
 		return this.prisma.task.findMany({
 			where: {
-				userId
-			}
+				userId,
+			},
 		});
 	}
 
@@ -41,7 +41,7 @@ export class TaskService {
 		return this.prisma.task.delete({
 			where: {
 				id: taskId,
-			}
+			},
 		});
 	}
 }

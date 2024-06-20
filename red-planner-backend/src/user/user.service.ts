@@ -7,24 +7,24 @@ import { startOfDay, subDays } from 'date-fns';
 
 @Injectable()
 export class UserService {
-	constructor(private prisma: PrismaService) { }
+	constructor(private prisma: PrismaService) {}
 
 	async getById(id: string) {
 		return this.prisma.user.findUnique({
 			where: {
-				id
+				id,
 			},
 			include: {
-				tasks: true
-			}
+				tasks: true,
+			},
 		});
 	}
 
 	async getByEmail(email: string) {
 		return this.prisma.user.findUnique({
 			where: {
-				email
-			}
+				email,
+			},
 		});
 	}
 
@@ -36,7 +36,7 @@ export class UserService {
 		};
 
 		return this.prisma.user.create({
-			data: user
+			data: user,
 		});
 	}
 
@@ -55,7 +55,7 @@ export class UserService {
 			select: {
 				name: true,
 				email: true,
-			}
+			},
 		});
 	}
 
@@ -77,18 +77,18 @@ export class UserService {
 			where: {
 				userId: id,
 				createdAt: {
-					gte: todayStart.toISOString()
-				}
-			}
+					gte: todayStart.toISOString(),
+				},
+			},
 		});
 
 		const weekTasks = await this.prisma.task.count({
 			where: {
 				userId: id,
 				createdAt: {
-					gte: weekStart.toISOString()
-				}
-			}
+					gte: weekStart.toISOString(),
+				},
+			},
 		});
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -101,7 +101,7 @@ export class UserService {
 				{ label: 'Completed tasks', value: completedTasks },
 				{ label: 'Today tasks', value: todayTasks },
 				{ label: 'Week tasks', value: weekTasks },
-			]
-		}
+			],
+		};
 	}
 }

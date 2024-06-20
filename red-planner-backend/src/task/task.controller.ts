@@ -6,7 +6,7 @@ import { TaskDto } from './task.dto';
 
 @Controller('user/tasks')
 export class TaskController {
-	constructor(private readonly taskService: TaskService) { }
+	constructor(private readonly taskService: TaskService) {}
 
 	@Get()
 	@Auth()
@@ -24,16 +24,12 @@ export class TaskController {
 	@HttpCode(200)
 	@Put(':id')
 	@Auth()
-	async update(
-		@Body() dto: TaskDto,
-		@CurrentUser('id') userId: string,
-		@Param('id') id: string,
-	) {
+	async update(@Body() dto: TaskDto, @CurrentUser('id') userId: string, @Param('id') id: string) {
 		return this.taskService.update(dto, id, userId);
 	}
 
 	@HttpCode(200)
-	@Delete(":id")
+	@Delete(':id')
 	@Auth()
 	async delete(@Param('id') id: string) {
 		return this.taskService.delete(id);

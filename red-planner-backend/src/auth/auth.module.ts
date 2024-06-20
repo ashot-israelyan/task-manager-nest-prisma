@@ -15,9 +15,9 @@ import { getJwtConfig } from 'src/config/jwt.config';
 			imports: [ConfigModule],
 			inject: [ConfigService],
 			useFactory: getJwtConfig,
-		})
+		}),
 	],
 	controllers: [AuthController],
 	providers: [AuthService, JwtStrategy],
 })
-export class AuthModule { }
+export class AuthModule {}

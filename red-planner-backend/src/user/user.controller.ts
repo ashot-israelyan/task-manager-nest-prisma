@@ -6,8 +6,7 @@ import { UserDto } from './user.dto';
 
 @Controller('user/profile')
 export class UserController {
-	constructor(private readonly userService: UserService) {
-	}
+	constructor(private readonly userService: UserService) {}
 
 	@Get()
 	@Auth()

@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
-	constructor(private readonly authService: AuthService) { }
+	constructor(private readonly authService: AuthService) {}
 
 	@HttpCode(200)
 	@Post('login')
@@ -37,7 +37,8 @@ export class AuthController {
 			throw new UnauthorizedException('Refresh token not passwed');
 		}
 
-		const { refreshToken, ...response } = await this.authService.getNewTokens(refreshTokenFromCookies);
+		const { refreshToken, ...response } =
+			await this.authService.getNewTokens(refreshTokenFromCookies);
 
 		this.authService.addRefreshTokenToResponse(res, refreshToken);
 

@@ -11,7 +11,7 @@ async function bootstrap() {
 	app.enableCors({
 		origin: ['http://localhost:3001'],
 		credentials: true,
-		exposedHeaders: 'set-cookie'
+		exposedHeaders: 'set-cookie',
 	});
 
 	app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
