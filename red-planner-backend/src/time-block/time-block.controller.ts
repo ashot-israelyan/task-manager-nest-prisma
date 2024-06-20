@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nest
 import { TimeBlockService } from './time-block.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { CurrentUser } from 'src/auth/decorators/user.decorator';
-import { TimeBlockDto } from './dtos/time-block.dto';
+import { TimeBlockDto, UpdateTimeBlockDto } from './dtos/time-block.dto';
 import { UpdateOrderDto } from './dtos/update-order.dto';
 
 @Controller('user/time-blocks')
@@ -33,7 +33,7 @@ export class TimeBlockController {
 	@Put(':id')
 	@Auth()
 	async update(
-		@Body() dto: TimeBlockDto,
+		@Body() dto: UpdateTimeBlockDto,
 		@CurrentUser('id') userId: string,
 		@Param('id') id: string,
 	) {

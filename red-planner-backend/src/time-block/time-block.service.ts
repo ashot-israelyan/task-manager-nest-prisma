@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import { TimeBlockDto } from './dtos/time-block.dto';
+import { TimeBlockDto, UpdateTimeBlockDto } from './dtos/time-block.dto';
 
 @Injectable()
 export class TimeBlockService {
@@ -30,7 +30,7 @@ export class TimeBlockService {
 		});
 	}
 
-	async update(dto: Partial<TimeBlockDto>, timeBlockId: string, userId: string) {
+	async update(dto: UpdateTimeBlockDto, timeBlockId: string, userId: string) {
 		return this.prisma.timeBlock.update({
 			where: {
 				userId,
