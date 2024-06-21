@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
 import { PomodoroService } from './pomodoro.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { CurrentUser } from 'src/auth/decorators/user.decorator';
@@ -7,6 +7,12 @@ import { PomodoroRoundDto, PomodoroSessionDto } from './pomodoro.dto';
 @Controller('user/timer')
 export class PomodoroController {
 	constructor(private readonly pomodoroService: PomodoroService) { }
+
+	@Get('today')
+	@Auth()
+	async getTodaySession(@CurrentUser('id') userId: string) {
+		return this.pomodoroService.getTodaySession(userId);
+	}
 
 	@HttpCode(200)
 	@Post()

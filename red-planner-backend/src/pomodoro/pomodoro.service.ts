@@ -4,7 +4,7 @@ import { PomodoroRoundDto, PomodoroSessionDto } from './pomodoro.dto';
 
 @Injectable()
 export class PomodoroService {
-	constructor(private prisma: PrismaService) {}
+	constructor(private prisma: PrismaService) { }
 
 	async getTodaySession(userId: string) {
 		const today = new Date().toISOString().split('T')[0];
@@ -19,7 +19,7 @@ export class PomodoroService {
 			include: {
 				rounds: {
 					orderBy: {
-						id: 'desc',
+						id: 'asc',
 					},
 				},
 			},
@@ -74,7 +74,7 @@ export class PomodoroService {
 	}
 
 	async updateRound(dto: Partial<PomodoroRoundDto>, roundId: string) {
-		return this.prisma.pomodoroSession.update({
+		return this.prisma.pomodoroRound.update({
 			where: {
 				id: roundId,
 			},

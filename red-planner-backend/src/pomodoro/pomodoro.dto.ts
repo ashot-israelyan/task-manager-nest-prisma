@@ -12,5 +12,5 @@ export class PomodoroRoundDto {
 
 	@IsOptional()
 	@IsBoolean()
-	isCompleted: boolean;
+	isCompleted?: boolean;
 }
