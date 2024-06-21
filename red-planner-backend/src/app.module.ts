@@ -5,10 +5,12 @@ import { ConfigModule } from '@nestjs/config';
 import { TaskModule } from './task/task.module';
 import { TimeBlockModule } from './time-block/time-block.module';
 import { PomodoroModule } from './pomodoro/pomodoro.module';
+import { PrismaModule } from './prisma.module';
 
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
+		PrismaModule,
 		AuthModule,
 		UserModule,
 		TaskModule,
@@ -16,4 +18,4 @@ import { PomodoroModule } from './pomodoro/pomodoro.module';
 		PomodoroModule,
 	],
 })
-export class AppModule {}
+export class AppModule { }
