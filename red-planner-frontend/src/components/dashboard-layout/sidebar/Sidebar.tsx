@@ -1,6 +1,10 @@
 import { GanttChartSquare } from 'lucide-react';
 import Link from 'next/link';
 
+import { LogoutButton } from '@/components/dashboard-layout/sidebar/LogoutButton';
+import { MenuItem } from '@/components/dashboard-layout/sidebar/MenuItem';
+import { MENU } from '@/components/dashboard-layout/sidebar/menu.data';
+
 import { COLORS } from '@/constants/color.constants';
 
 export function Sidebar() {
@@ -10,7 +14,6 @@ export function Sidebar() {
 				<Link
 					href='/'
 					className='flex items-center gap-2.5 p-layout border-b border-b-border'
-					draggable={false}
 				>
 					<GanttChartSquare
 						color={COLORS.primary}
@@ -23,7 +26,28 @@ export function Sidebar() {
 						</span>
 					</span>
 				</Link>
+				<div className='p-3 relative'>
+					<LogoutButton />
+					{MENU.map(item => (
+						<MenuItem
+							item={item}
+							key={item.link}
+						/>
+					))}
+				</div>
 			</div>
+			<footer className='text-xs opacity-40 font-normal text-center p-layout'>
+				2024 &copy; With love from{' '}
+				<a
+					href='https://youtube.com'
+					target='_blank'
+					rel='noreferrer'
+					className='hover:text-primary text-brand-300 transition-colors'
+				>
+					RED Group
+				</a>
+				. <br /> All rights reserved.
+			</footer>
 		</aside>
 	);
 }
