@@ -4,7 +4,7 @@ import Loader from '@/components/ui/Loader';
 
 import { useProfile } from '@/hooks/useProfile';
 
-const Staistics = () => {
+const Statistics = () => {
 	const { data, isLoading } = useProfile();
 
 	return isLoading ? (
@@ -28,4 +28,4 @@ const Staistics = () => {
 	);
 };
 
-export default Staistics;
+export default Statistics;
