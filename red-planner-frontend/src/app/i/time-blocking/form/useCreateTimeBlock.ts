@@ -12,7 +12,7 @@ export function useCreateTimeBlock() {
 		mutationFn: (data: TypeTimeBlockFormState) => timeBlockService.createTimeBlock(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
-				queryKey: ['time-block'],
+				queryKey: ['time-blocks'],
 			});
 		},
 	});
